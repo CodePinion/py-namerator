@@ -2,6 +2,8 @@
 UserGen Class 
 '''
 
+import random
+
 class UserGen():
 
     def __init__(self,email,max_num):
@@ -31,4 +33,6 @@ class UserGen():
         This method generates a random number considering the maximum number passed to it
         '''
 
-        
+        gen_number =  random.randint(0, self.max_num)
+
+        return gen_number
