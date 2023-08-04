@@ -18,7 +18,7 @@ valid_email_formats = [
 ]
 
 
-def test_smail_strip():
+def test_mail_strip():
 
     for email in valid_email_formats:
 
@@ -29,7 +29,6 @@ def test_smail_strip():
 
 
 if __name__ == "__main__":
-    test_smail_strip()
+    test_mail_strip()
     print("Everything passed")
 
-#random_numbers = [22, 23, 80, 2, 44, 5, 49, 46, 50, 21]
