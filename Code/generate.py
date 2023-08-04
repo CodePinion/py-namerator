@@ -53,6 +53,17 @@ class UserGen():
         
         else:
 
-            gen_number =  random.randint(0, self.max_num)
+            gen_number =  random.randint(1, self.max_num)
+
+            gen_number = str(gen_number)
 
             return gen_number
+        
+
+    def combine_mail_num(self):
+
+        '''
+        This method now combines the stripped email and random number generated
+        '''
+
+        return self.StripMail() + self.GenNumWithMax()

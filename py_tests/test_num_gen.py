@@ -4,7 +4,7 @@ sys.path.insert(1, './/Code')
 
 import generate
 
-random_numbers = [22, -1, 80, 2, 44, 5, 49, 46, 50, 21]
+random_numbers = [22, 1, 80, 2, 44, 5, 49, 46, 50, 21]
 
 def test_num_gen():
 
