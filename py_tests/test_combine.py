@@ -25,7 +25,7 @@ def test_num_gen_combine():
 
         number_gen_class = generate.UserGen(valid_email_formats[i],random_numbers[i])
 
-        print(number_gen_class.combine_mail_num())
+        print(number_gen_class.Combine_Mail_Num())
 
 
 

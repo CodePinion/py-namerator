@@ -40,6 +40,7 @@ class UserGen():
         else:
 
             raise ValueError('Invalid Email Format : ' + self.email)
+        
 
     def GenNumWithMax(self):
 
@@ -47,23 +48,71 @@ class UserGen():
         This method generates a random number considering the maximum number passed to it
         '''
 
-        if self.max_num < 1:
+        if isinstance(self.max_num, int):
 
-            raise ValueError('The maximum number should be greated than 1')
+            if self.max_num < 1:
+
+                raise ValueError('The Maximum Number should be greated than 1')
+            
+            else:
+
+                gen_number =  random.randint(1, self.max_num)
+
+                gen_number = str(gen_number)
+
+                return gen_number
         
         else:
 
-            gen_number =  random.randint(1, self.max_num)
-
-            gen_number = str(gen_number)
-
-            return gen_number
+            raise ValueError('The Maximum Number should be of type Integer')
         
 
-    def combine_mail_num(self):
+    def Combine_Mail_Num(self):
 
         '''
         This method now combines the stripped email and random number generated
         '''
 
         return self.StripMail() + self.GenNumWithMax()
+    
+
+    def GenMoreName(self, names_number):
+
+        '''
+        This method generates the number of names passed (names_number)
+        '''
+
+        #List of generated usernames
+        generated_names = []
+
+        if isinstance(names_number, int):
+        
+            if names_number < 1:
+
+                raise ValueError('The amount of names to be generated cannot be less than 1')
+            
+            else:
+
+                loop_count = 0
+
+                while loop_count < names_number:
+
+                    name_generated = self.Combine_Mail_Num()
+
+                    if name_generated not in generated_names:
+
+                        generated_names.append(name_generated)
+
+                        loop_count += 1
+
+                    else:
+
+                        loop_count = loop_count
+
+
+        else:
+
+            raise ValueError('The amount of names to be generated should be of Integer type')
+
+
+        return generated_names    
