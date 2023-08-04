@@ -3,6 +3,7 @@ UserGen Class
 '''
 
 import random
+import re
 
 class UserGen():
 
@@ -16,16 +17,29 @@ class UserGen():
 
         '''
         This method Strips an email
-        Example:
-        1. Email = dev@gmail.com 
-            returns: dev
-        2. Email = testmail@yahoo.com
-            returns: testmail    
+
+        - It first check if the email format is valid, 
+            * if true => it proceeds with the following
+                Example:
+                1. Email = dev@gmail.com 
+                    returns: dev
+                2. Email = testmail@yahoo.com
+                    returns: testmail   
+
+            * if false 
         '''
 
-        mail_extract = self.email.split('@')[0]
+        check_valid_mail = bool(re.match(r"[^@]+@[^@]+\.[^@]+", self.email))
 
-        return mail_extract
+        if check_valid_mail == True:
+
+            mail_extract = self.email.split('@')[0]
+
+            return mail_extract
+
+        else:
+
+            raise ValueError('Invalid Email Format : ' + self.email)
 
     def GenNumWithMax(self):
 
