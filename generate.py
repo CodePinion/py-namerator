@@ -47,6 +47,12 @@ class UserGen():
         This method generates a random number considering the maximum number passed to it
         '''
 
-        gen_number =  random.randint(0, self.max_num)
+        if self.num < 1:
 
-        return gen_number
+            raise ValueError('The maximum number should be greated than 1')
+        
+        else:
+
+            gen_number =  random.randint(0, self.max_num)
+
+            return gen_number
