@@ -16,14 +16,14 @@ class UserGen():
     def StripMail(self):
 
         '''
-        This method Strips an email
+        This method Strips an Email
 
         - It first check if the email format is valid, 
             * if true => it proceeds with the following
                 Example:
-                1. Email = dev@gmail.com 
+                - Email = dev@gmail.com 
                     returns: dev
-                2. Email = testmail@yahoo.com
+                - Email = testmail@yahoo.com
                     returns: testmail   
 
             * if false 
@@ -74,51 +74,13 @@ class UserGen():
         '''
 
         return self.StripMail() + self.GenNumWithMax()
-    
+        
 
-    def GenMoreName(self, names_number):
+    def GenMoreName(self, names_number, custom_list = []):
 
         '''
         This method generates the number of names passed (names_number)
-        '''
-
-        #List of generated usernames
-        generated_names = []
-
-        if isinstance(names_number, int):
-        
-            if names_number < 1:
-
-                raise ValueError('The amount of names to be generated cannot be less than 1')
-            
-            else:
-
-                loop_count = 0
-
-                while loop_count < names_number:
-
-                    name_generated = self.Combine_Mail_Num()
-
-                    if name_generated not in generated_names:
-
-                        generated_names.append(name_generated)
-
-                        loop_count += 1
-
-                    else:
-
-                        loop_count = loop_count
-
-
-        else:
-
-            raise ValueError('The amount of names to be generated should be of Integer type')
-        
-
-    def GenAndCompare(self, names_number, custom_list = []):
-
-        '''
-        This method generates the number of names passed (names_number)
+        This method also gives you the ability to compare the generated names with a custom list
         '''
 
         #List of generated usernames
