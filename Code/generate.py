@@ -16,7 +16,7 @@ class UserGen():
     def StripMail(self):
 
         '''
-        This method Strips an Email
+        This method Strips an Email.
 
         - It first check if the email format is valid, 
             * if true => it proceeds with the following
@@ -26,7 +26,7 @@ class UserGen():
                 - Email = testmail@yahoo.com
                     returns: testmail   
 
-            * if false 
+            * if false => raises a value error
         '''
 
         check_valid_mail = bool(re.match(r"[^@]+@[^@]+\.[^@]+", self.email))
@@ -45,7 +45,9 @@ class UserGen():
     def GenNumWithMax(self):
 
         '''
-        This method generates a random number considering the maximum number passed to it
+        ### This method 
+        * Generates a random number considering the maximum number passed to it.
+        * Then, converts the generated number to a string => str(generated_number).
         '''
 
         if isinstance(self.max_num, int):
@@ -79,8 +81,9 @@ class UserGen():
     def GenMoreName(self, names_number, custom_list = []):
 
         '''
-        This method generates the number of names passed (names_number)
-        This method also gives you the ability to compare the generated names with a custom list
+        ### This method 
+        * Generates the number of names passed (names_number = )
+        * Also gives you the ability to compare the generated names with a (custom list = [ ])
         '''
 
         #List of generated usernames
