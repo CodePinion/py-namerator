@@ -86,8 +86,11 @@ class UserGen():
         * Also gives you the ability to compare the generated names with a (custom list = [ ])
         '''
 
-        #List of generated usernames
-        generated_names = []
+        #Set of generated usernames
+        generated_names_set = set()
+
+        #Convert the custom list to find items faster Time Complexity of search in set is O(n)
+        custom_list_set = set(custom_list)
 
         if isinstance(names_number, int):
         
@@ -103,9 +106,9 @@ class UserGen():
 
                     name_generated = self.Combine_Mail_Num()
 
-                    if name_generated not in generated_names and name_generated not in custom_list:
+                    if name_generated not in (generated_names_set | custom_list_set):
 
-                        generated_names.append(name_generated)
+                        generated_names_set.add(name_generated)
 
                         loop_count += 1
 
@@ -113,6 +116,10 @@ class UserGen():
 
                         loop_count = loop_count
 
+
+                #Covert the generated_names_set to a list to be returned
+                generated_names = list(generated_names_set)
+                
 
         else:
 
