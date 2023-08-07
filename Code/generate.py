@@ -78,11 +78,11 @@ class UserGen():
         return self.StripMail() + self.GenNumWithMax()
         
 
-    def GenMoreName(self, names_number, custom_list = []):
+    def GenMoreName(self, names_amount, custom_list = []):
 
         '''
         ### This method 
-        * Generates the number of names passed (names_number = )
+        * Generates the amount of names passed (names_amount = )
         * Also gives you the ability to compare the generated names with a (custom list = [ ])
         '''
 
@@ -92,34 +92,40 @@ class UserGen():
         #Convert the custom list to find items faster Time Complexity of search in set is O(n)
         custom_list_set = set(custom_list)
 
-        if isinstance(names_number, int):
+        if isinstance(names_amount, int):
         
-            if names_number < 1:
+            if names_amount < 1:
 
                 raise ValueError('The amount of names to be generated cannot be less than 1')
             
             else:
 
-                loop_count = 0
+                if names_amount > self.max_num:
 
-                while loop_count < names_number:
+                    raise ValueError('The amount of names to be generated cannot be more than the set maximum range of the random numbers generated')
+                
+                else:
 
-                    name_generated = self.Combine_Mail_Num()
+                    loop_count = 0
 
-                    if name_generated not in (generated_names_set | custom_list_set):
+                    while loop_count < names_amount:
 
-                        generated_names_set.add(name_generated)
+                        name_generated = self.Combine_Mail_Num()
 
-                        loop_count += 1
+                        if name_generated not in (generated_names_set | custom_list_set):
 
-                    else:
+                            generated_names_set.add(name_generated)
 
-                        loop_count = loop_count
+                            loop_count += 1
+
+                        else:
+
+                            loop_count = loop_count
 
 
                 #Covert the generated_names_set to a list to be returned
                 generated_names = list(generated_names_set)
-                
+
 
         else:
 

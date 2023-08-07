@@ -5,7 +5,7 @@ sys.path.insert(1, './/Code')
 import generate
 
 email = 'example@gmail.com'
-max_number = 100
+max_number = 11
 max_names_gen = 10
 
 def test_more_gens():
