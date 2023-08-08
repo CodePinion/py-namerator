@@ -42,13 +42,16 @@ class UserGen():
             raise ValueError('Invalid Email Format : ' + self.email)
         
 
-    def GenNumWithMax(self):
+    def GenNumWithMax(self, comparable_list=[]):
 
         '''
         ### This method 
         * Generates a random number considering the maximum number passed to it.
         * Then, converts the generated number to a string => str(generated_number).
         '''
+
+        comparable_set = set(comparable_list)
+        number_found = False
 
         if isinstance(self.max_num, int):
 
@@ -58,11 +61,22 @@ class UserGen():
             
             else:
 
-                gen_number =  random.randint(1, self.max_num)
+                while number_found == False:
 
-                gen_number = str(gen_number)
+                    gen_number =  random.randint(1, self.max_num)
 
-                return gen_number
+                    if gen_number not in comparable_set:
+
+                        gen_number = str(gen_number)
+
+                        number_found = True
+
+                        return gen_number
+                    
+                    else:
+                        
+                        number_found = False
+
         
         else:
 
