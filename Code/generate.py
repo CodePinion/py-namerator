@@ -48,6 +48,7 @@ class UserGen():
         ### This method 
         * Generates a random number considering the maximum number passed to it.
         * Then, converts the generated number to a string => str(generated_number).
+        * It also takes in a list comparable_number_list=[] and compares the generated number to this list and returns it if it in not in this list.
         '''
 
         #Convert the Number list to set for easier searching
@@ -88,26 +89,26 @@ class UserGen():
     def Combine_Mail_Num(self,number_list=[]):
 
         '''
-        This method now combines the stripped email and random number generated
+        This method now combines the stripped email and random number generated => self.StripMail() + self.GenNumWithMax()
         '''
 
         return self.StripMail() + self.GenNumWithMax(number_list)
         
 
-    def GenMoreName(self, names_amount, custom_list = [], number_list=[]):
+    def GenMoreName(self, names_amount, custom_username_list = [], number_list=[]):
 
         '''
         ### This method 
         * Generates the amount of names passed (names_amount = )
         * Also gives you the ability to compare the generated names with a (custom list = [ ])
-        * Also compares the generated number from the GenNumWithMax(number_list=[]) method with a custom list passed from this method to the GenNumWithMax(number_list=[]) method
+        * Also compares the generated number from the GenNumWithMax() method with a custom list passed from this method to the GenNumWithMax(number_list=[]) method
         '''
 
         #Set of generated usernames
         generated_names_set = set()
 
         #Convert the custom list to find items faster Time Complexity of search in set is O(n)
-        custom_list_set = set(custom_list)
+        custom_list_set = set(custom_username_list)
 
         if isinstance(names_amount, int):
         
