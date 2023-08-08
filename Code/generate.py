@@ -42,7 +42,7 @@ class UserGen():
             raise ValueError('Invalid Email Format : ' + self.email)
         
 
-    def GenNumWithMax(self, comparable_list=[]):
+    def GenNumWithMax(self, comparable_number_list=[]):
 
         '''
         ### This method 
@@ -50,7 +50,9 @@ class UserGen():
         * Then, converts the generated number to a string => str(generated_number).
         '''
 
-        comparable_set = set(comparable_list)
+        #Convert the Number list to set for easier searching
+        comparable_set = set(comparable_number_list)
+        #Set number found to false
         number_found = False
 
         if isinstance(self.max_num, int):
@@ -83,21 +85,22 @@ class UserGen():
             raise ValueError('The Maximum Number should be of type Integer')
         
 
-    def Combine_Mail_Num(self):
+    def Combine_Mail_Num(self,number_list=[]):
 
         '''
         This method now combines the stripped email and random number generated
         '''
 
-        return self.StripMail() + self.GenNumWithMax()
+        return self.StripMail() + self.GenNumWithMax(number_list)
         
 
-    def GenMoreName(self, names_amount, custom_list = []):
+    def GenMoreName(self, names_amount, custom_list = [], number_list=[]):
 
         '''
         ### This method 
         * Generates the amount of names passed (names_amount = )
         * Also gives you the ability to compare the generated names with a (custom list = [ ])
+        * Also compares the generated number from the GenNumWithMax(number_list=[]) method with a custom list passed from this method to the GenNumWithMax(number_list=[]) method
         '''
 
         #Set of generated usernames
@@ -124,7 +127,7 @@ class UserGen():
 
                     while loop_count < names_amount:
 
-                        name_generated = self.Combine_Mail_Num()
+                        name_generated = self.Combine_Mail_Num(number_list)
 
                         if name_generated not in (generated_names_set | custom_list_set):
 
